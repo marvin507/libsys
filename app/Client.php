@@ -1,0 +1,18 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+class Client extends Model
+{
+	use SoftDeletes;
+	protected $dates = ['deleted_at'];
+    protected $fillable = ['name', 'ced', 'telefono', 'email', 'tipo'];
+
+    //un cliente puede tener una orden
+    public function order(){
+
+    	return $this->hasOne('App\Order');
+    }
+}
